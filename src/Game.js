@@ -7,18 +7,18 @@ const Round = require('./Round')
 
 class Game {
   constructor() {
-    this.currentRound = currentRound
-    // should keep track of current round
+    this.currentRound = null
   }
 
   start() {
-    // method that starts everything
-    // creates Cards (new Card)
-    // create new Round (new Round) using Deck( new Deck)
-  
-    // printMessage()
-    // printQuestion()
+    const cards = prototypeQuestions.map((card) => new Card(card.id, card.question, card.answers, card.correctAnswer))
 
+    const deck = new Deck(cards)
+    const round = this.currentRound
+
+    this.currentRound = new Round(deck)
+    this.printMessage(deck, this.currentRound)
+    this.printQuestion(this.currentRound)
   }
 
   printMessage(deck, round) {
