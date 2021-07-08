@@ -13,7 +13,11 @@ describe('Game', function() {
     game = new Game()
   })
 
-  it ('should be an instance', function() {
-    expect(Game).to.be.an.instanceOf(Game)
+  it('should be an instance', function() {
+    expect(game).to.be.an.instanceOf(Game)
+  })
+
+  it('should be able to track current round', function() {
+
   })
 })
