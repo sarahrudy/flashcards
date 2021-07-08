@@ -23,9 +23,9 @@ describe('Deck', function() {
     expect(deck.cards).to.deep.equal([card1, card2, card3, card4])
   })
 
-  describe('cardCount()', function() {
+  describe('countCards()', function() {
     it('should be able to count cards in deck', function() { 
-      const numCards = deck.cardCount()
+      const numCards = deck.countCards()
 
       expect(numCards).to.equal(4)
     })
