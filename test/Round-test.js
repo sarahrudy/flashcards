@@ -5,31 +5,93 @@ const Card = require('../src/Card')
 const Deck = require('../src/Deck')
 const Round = require('../src/Round')
 
-// What is this app actually supposed to do? Then I would walk through doing all of those things and test them. Like, see the home page with all the stuff on it, click on button, see a new thing
-// What are the ways this could get screwed up? Like user clicks at wrong time, or user enters bad data, or the server is dead, etc.
+describe('Round', function() {
+  let card1, card2, card3, card4, deck, round 
 
-// we will need card1, card2, card3, deck(cards), round
+  beforeEach(function() {
+    card1 = new Card(1, 'What do iterator methods take in as their first argument?', ['callback function', 'current element', 'an array'], 'callback function')
+    card2 = new Card(2, 'What does the callback function for the map() method take in?', ["current element", "initializer", "boolean"], 'current element')
+    card3 = new Card(3, 'What does the callback function for reduce() return?', ["the accumulator", "the current element", "the initializer"], 'the accumulator')
+    card4 = new Card(4, 'Which prototype method is used to iterate over each property of an object?', ["Object.keys()", "Object.values()", "reduce()"], 'Object.keys()')
+    deck = new Deck([card1, card2, card3, card4])
+    round = new Round(deck);
+  })
 
-// tests
-// should be a function
-// should be able to count turns taken
-// should start with an empty array for incorrect guesses 
+  it('should be a function', function() {
+    expect(Round).to.be.a('function')
+  })
 
-// returnCurrentCard()
-// can return the current card being played in deck
+  it('should exist and be able to store deck of cards', function() {
+    expect(round.deck).to.be.an.instanceOf(Deck)
+    expect(round.deck.cards).to.deep.equal([card1, card2, card3, card4])
+  })
 
-// takeTurn()
-// should create a new turn instance each time a guess is made
-// should be able to add one to the turn counter each turn
-// should be able to shuffle to next card in deck
-// should be able to evaluate correct
-// should be able to evaluate incorrect 
-// should be able to shovel incorrect guesses into array
-// should be able to return feedback - turn.giveFeedback()
+  it('should start with 0 turns', function() {
+    expect(round.turnCounter).to.equal(0)
+  })
 
-// calculatePercentCorrect()
-// should be able to calculate total number of correct guesses
-// should be able to return percentage of correct guesses
+  it('should start with an empty array', function() {
+    expect(round.incorrectCards).to.deep.equal([])
+  })
 
-// endRound()
-// should be able to return 'Round over! You answered 25% of the questions correctly!'
+  describe('returnCurrentCard', function() {
+    it('should return the current card being played in deck', function() {
+      const currentCard = round.returnCurrentCard()
+
+      expect(currentCard).to.equal(card1)
+    })
+  })
+
+  describe('takeTurn', function() {
+    it('should increase turn counter by one each turn', function() {
+      round.takeTurn('current element')
+      round.takeTurn('initializer')
+     
+       expect(round.turnCounter).to.equal(2)
+    })
+
+    it('should be able to shuffle to the next card', function() {
+      round.takeTurn('current element')
+      const nextCard = round.returnCurrentCard()
+
+      expect(nextCard).to.equal(card2)
+    })
+
+    it('should be able to shovel incorrect cards into array by id', function() {
+      round.takeTurn('callback function')
+      round.takeTurn('boolean')
+      round.takeTurn('an array')
+      round.takeTurn('Object.keys()')
+
+      expect(round.incorrectCards).to.deep.equal([2, 3])
+    })
+  })
+
+  describe('calculatePercentCorrect', function() {
+    it('should be able to calculate and return percentage of correct guesses', function () {
+      round.takeTurn('callback function')
+      round.takeTurn('boolean')
+      round.takeTurn('an array')
+      round.takeTurn('Object.keys()')
+
+      const correctCards = round.calculatePercentCorrect()
+
+      expect(correctCards).to.equal(50)
+    })
+  })
+
+  describe('endRound', function() {
+    it('should return "**Round over!** You answered 50% of the questions correctly!"', function() {
+      round.takeTurn('callback function')
+      round.takeTurn('boolean')
+      round.takeTurn('an array')
+      round.takeTurn('Object.keys()')
+
+      const result = round.endRound()
+
+      expect(result).to.equal('**Round over!** You answered 50% of the questions correctly!')
+    })
+  })
+})
+
+
