@@ -18,6 +18,6 @@ describe('Game', function() {
   })
 
   it('should be able to track current round', function() {
-
+    expect(game.currentRound).to.equal(null)
   })
 })
