@@ -69,11 +69,11 @@ describe('Round', function() {
     it('should be able to return feedback', function() {
       const correct = round.takeTurn('callback function')
 
-      expect(correct).to.equal('Nailed it!')
+      expect(correct).to.equal('correct!')
 
       const incorrect = round.takeTurn('boolean')
 
-      expect(incorrect).to.equal('Nope! Sorry, try again.')
+      expect(incorrect).to.equal('incorrect.')
     })
   })
 
