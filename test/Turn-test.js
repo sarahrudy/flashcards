@@ -57,18 +57,18 @@ describe('Turn', function() {
   })
 
   describe('giveFeedback()', function() {
-    it('should display \'Nailed it!\' if the answer is correct', function() {
+    it('should display "correct!" if the answer is correct', function() {
       const turn = new Turn('callback function', card)
       const goodFeedback = turn.giveFeedback()
 
-      expect(goodFeedback).to.equal('Nailed it!')
+      expect(goodFeedback).to.equal('correct!')
     })
 
-    it('should display \'Nope! Sorry, try again.\' if the answer is incorrect', function() {
+    it('should display "incorrect." if the answer is incorrect', function() {
       const turn = new Turn('an array', card)
       const badFeedback = turn.giveFeedback()
 
-      expect(badFeedback).to.equal('Nope! Sorry, try again.')
+      expect(badFeedback).to.equal('incorrect.')
     })
   })
 })

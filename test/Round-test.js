@@ -27,11 +27,11 @@ describe('Round', function() {
   })
 
   it('should start with 0 turns', function() {
-    expect(round.turnCounter).to.equal(0)
+    expect(round.turns).to.equal(0)
   })
 
   it('should start with an empty array', function() {
-    expect(round.incorrectCards).to.deep.equal([])
+    expect(round.incorrectGuesses).to.deep.equal([])
   })
 
   describe('returnCurrentCard', function() {
@@ -47,7 +47,7 @@ describe('Round', function() {
       round.takeTurn('current element')
       round.takeTurn('initializer')
      
-       expect(round.turnCounter).to.equal(2)
+       expect(round.turns).to.equal(2)
     })
 
     it('should be able to shuffle to the next card', function() {
@@ -63,7 +63,17 @@ describe('Round', function() {
       round.takeTurn('an array')
       round.takeTurn('Object.keys()')
 
-      expect(round.incorrectCards).to.deep.equal([2, 3])
+      expect(round.incorrectGuesses).to.deep.equal([2, 3])
+    })
+
+    it('should be able to return feedback', function() {
+      const correct = round.takeTurn('callback function')
+
+      expect(correct).to.equal('correct!')
+
+      const incorrect = round.takeTurn('boolean')
+
+      expect(incorrect).to.equal('incorrect.')
     })
   })
 
