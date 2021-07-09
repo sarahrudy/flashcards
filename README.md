@@ -3,7 +3,8 @@
 Flashcards simulates a set of flashcards right in your terminal. A set of questions is loaded one at a time and you choose one of three answers using the arrows or number key! 
 
 # How it Runs
-![Jul-08-2021 19-41-17](https://user-images.githubusercontent.com/78389005/125010943-c0061280-e024-11eb-920b-3229bd42412a.gif)
+![Jul-08-2021 19-48-38](https://user-images.githubusercontent.com/78389005/125011375-900b3f00-e025-11eb-87b0-fa41c3a57983.gif)
+
 
 # Technologies Used
 
