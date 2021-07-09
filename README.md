@@ -1,9 +1,37 @@
 # FlashCards
 
-In this project, we write a program to simulate a set of flash cards through the command line! A user will be able to see the questions, take guesses, and see a final score at the end of the round. Test Driven Development (TDD) was used to write functional code. 
+Flashcards simulates a set of flashcards right in your terminal. A set of questions is loaded one at a time and you choose one of three answers using the arrows or number key! 
 
-# GIF
+# How it Runs
+![Jul-08-2021 19-41-17](https://user-images.githubusercontent.com/78389005/125010943-c0061280-e024-11eb-920b-3229bd42412a.gif)
 
 # Technologies Used
 
+- JavaScript
+- Mocha
+- Chai
+- Test Driven Development
+
 # Install/Setup Instructions
+
+Clone down this repo. 
+
+```bash
+git clone [remote-address]
+```
+
+Once you have cloned the repo, change into the directory and install the library dependencies. Run:
+
+```bash
+npm install
+```
+
+Running `node index.js` should start the game! 
+
+ - You should be prompted with a question. 
+ - Three answers will be populated below and one will be highlighted. 
+ - Use the arrows on your keyboard to toggle through the answers. Once the answer you want to use is highlighted, press enter to select it.
+ - A message will pop up telling you if it is correct or incorrect!
+ - Press enter again to see the next question and repeat! 
+
+**NOTE:** There are 30 questions in the deck. Once you have run through all the questions a message will pop up telling you how many you got right. It will also exit the game for you. If at any point you want to exit the game, press **ctrl + c** and you will be taken out of the game. 
